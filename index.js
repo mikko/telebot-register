@@ -41,8 +41,8 @@ const handleRegistrationCommand = (userID, msgText) => {
     .then(data => {
       const dataStore = JSON.parse(data.toString());
 
-      const NAMESPACE = uuidv5(`${serviceName}${env.domainName}`, uuidv5.DNS);
-      const userHash = uuidv5(userID, NAMESPACE);
+      const NAMESPACE = uuidv5(`${serviceName}.${env.domainName}`, uuidv5.DNS);
+      const userHash = uuidv5(userID.toString(), NAMESPACE);
 
       dataStore.users[userHash] = userID;
 
